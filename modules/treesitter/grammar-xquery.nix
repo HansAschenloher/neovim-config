@@ -13,10 +13,10 @@ let
   };
 in
 {
-  programs.nixvim.plugins.treesitter = {
+  plugins.treesitter = {
     grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars ++ [ treesitter-xquery-grammar ];
     languageRegister.xquery = "xquery";
   };
 
-  programs.nixvim.extraPlugins = [ treesitter-xquery-grammar ];
+  extraPlugins = [ treesitter-xquery-grammar ];
 }

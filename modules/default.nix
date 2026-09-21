@@ -1,30 +1,27 @@
 {
   pkgs,
   lib,
-  config,
   ...
 }:
-let
-  cfg = config.my.modules.neovim;
-in
 {
   imports = [
-    #./cmp.nix
-    #./conform.nix
-    #./dap.nix
-    #./lsp.nix
-    #./neoclip.nix
-    #./ntree.nix
+    ./cmp.nix
+    ./conform.nix
+    ./dap.nix
+    ./lsp.nix
+    ./neoclip.nix
+    ./ntree.nix
     ./telescope.nix
-    #./treesitter.nix
-    #./undotree.nix
-    #./utils.nix
+    ./treesitter.nix
+    ./undotree.nix
+    ./utils.nix
   ];
   #enable = true;
   #defaultEditor = true;
   #vimdiffAlias = true;
+  colorschemes.dracula-nvim.enable = true;
   opts = {
-    background = "light";
+    background = "dark";
     colorcolumn = "80";
     completeopt = "menu,menuone,noselect";
     copyindent = true;
@@ -76,8 +73,6 @@ in
       nvimRuntime = true;
     };
   };
-
-  #  colorschemes.dracula.enable = true;
 
   keymaps = [
     {
