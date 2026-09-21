@@ -2,11 +2,11 @@
   imports = [
     ./treesitter/grammar-xquery.nix
   ];
-  programs.nixvim.plugins = {
+  plugins = {
     treesitter = {
       enable = false;
-      #highlight.enable = true;
-      #folding.enable = true;
+      highlight.enable = true;
+      folding.enable = true;
       #indent.enable = true;
       settings = {
         incremental_selection.enable = true;
