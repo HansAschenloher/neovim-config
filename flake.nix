@@ -17,16 +17,10 @@
       ];
       imports = [
         inputs.nixvim.flakeModules.default
-        #inputs.flake-parts.flakeModules.modules
-        #(inputs.import-tree ./modules)
       ];
 
       nixvim = {
-        # Automatically install corresponding packages for each nixvimConfiguration
-        # Lets you run `nix run .#<name>`, or simply `nix run` if you have a default
         packages.enable = true;
-        # Automatically install checks for each nixvimConfiguration
-        # Run `nix flake check` to verify that your config is not broken
         checks.enable = true;
       };
 
@@ -35,7 +29,7 @@
       };
 
       perSystem =
-        { system, ... }:
+        { system, pkgs, ... }:
         {
           # You can define actual Nixvim configurations here
           nixvimConfigurations = {
@@ -44,6 +38,22 @@
               modules = [
                 inputs.self.nixvimModules.default
               ];
+            };
+          };
+          packages = {
+            neovim-offline = pkgs.writeShellApplication {
+              name = "nvim";
+              runtimeInputs = [
+                pkgs.bubblewrap
+                inputs.self.packages."${system}".default
+                pkgs.bash
+              ];
+              text = ''
+                bwrap --dev-bind / / --unshare-net ${
+                  inputs.nixpkgs.lib.getExe inputs.self.packages."${system}".default
+                } "$@"
+              '';
+
             };
           };
         };
