@@ -16,10 +16,7 @@
     ./undotree.nix
     ./utils.nix
   ];
-  #enable = true;
-  #defaultEditor = true;
-  #vimdiffAlias = true;
-  colorschemes.dracula-nvim.enable = true;
+  colorschemes.gruvbox-material-nvim.enable = false;
   opts = {
     background = "dark";
     colorcolumn = "80";
