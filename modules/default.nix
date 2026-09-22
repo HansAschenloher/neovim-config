@@ -16,8 +16,10 @@
     ./undotree.nix
     ./utils.nix
   ];
+  nixpkgs.config.allowUnfree = true;
   colorschemes.gruvbox-material-nvim.enable = false;
   opts = {
+    exrc = true;
     background = "dark";
     colorcolumn = "80";
     completeopt = "menu,menuone,noselect";
