@@ -53,7 +53,7 @@
         ruff.enable = true;
 
         ts_ls = {
-          enable = false;
+          enable = true;
           settings = {
             preferences = {
               disableSuggestions = true;
