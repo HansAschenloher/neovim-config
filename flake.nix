@@ -47,6 +47,7 @@
                 pkgs.bubblewrap
                 inputs.self.packages."${system}".default
                 pkgs.bash
+                pkgs.vscode-js-debug
               ];
               text = ''
                 bwrap --dev-bind / / --unshare-net ${
